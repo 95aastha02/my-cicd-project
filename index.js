@@ -1,21 +1,24 @@
-
-
 const express = require("express");
-const app = express();
 
+const app = express();
 const PORT = process.env.PORT || 8001;
 
 app.get("/", (req, res) => {
   res.send(`
-    <h1>Hello, I am Aastha</h1>
-    <h2>Full CI/CD Pipeline Assignment</h2>
-    <p>This project is deployed automatically using GitHub Actions.</p>
-    <p> its my first try </p>
-
-
+    <h1>Aastha Adhikari</h1>
+    <h2>CI/CD Assignment</h2>
+    <p>The application is running successfully.</p>
+    <p>Port: ${PORT}</p>
   `);
 });
 
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+app.get("/health", (req, res) => {
+  res.status(200).json({
+    status: "success",
+    message: "Application is healthy",
+  });
+});
+
+app.listen(PORT, "0.0.0.0", () => {
+  console.log(`Application running on port ${PORT}`);
 });

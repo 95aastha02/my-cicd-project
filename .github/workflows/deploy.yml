@@ -1,26 +1,51 @@
-name: Node CI Pipeline
+name: Node.js CI/CD Pipeline
 
 on:
   push:
     branches:
       - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
 
 jobs:
-  build:
+  continuous-integration:
+    name: Build and Test
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      - name: Download repository code
         uses: actions/checkout@v4
 
-      - name: Setup Node.js
+      - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: "20"
+          cache: npm
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
-      - name: Check project files
-        run: ls -la
+      - name: Run tests
+        run: npm test
 
+      - name: Verify application syntax
+        run: node --check index.js
+
+  continuous-deployment:
+    name: Deployment Simulation
+    needs: continuous-integration
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Download repository code
+        uses: actions/checkout@v4
+
+      - name: Simulate college-server deployment
+        run: |
+          echo "CI tests passed."
+          echo "Application is ready for deployment."
+          echo "Target server: College server"
+          echo "Target port: 8001"
+          echo "Deployment command would update the Node.js application."

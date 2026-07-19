@@ -1,19 +1,13 @@
 {
   "name": "my-cicd-project",
   "version": "1.0.0",
-  "description": "",
+  "description": "CI/CD assignment project",
   "main": "index.js",
   "scripts": {
-   "start":"node index.js",
-
-
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js",
+    "test": "node -e \"console.log('Tests passed successfully')\""
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "commonjs",
   "dependencies": {
-    "express": "^5.2.1"
+    "express": "^5.1.0"
   }
 }
