@@ -7,8 +7,7 @@ app.get("/", (req, res) => {
   res.send(`
     <h1>Aastha Adhikari</h1>
     <h2>CI/CD Assignment</h2>
-    <p>The application is running successfully.</p>
-    <p>Port: ${PORT}</p>
+<p>New change deployed through the CI/CD pipeline.</p>    <p>Port: ${PORT}</p>
   `);
 });
 
